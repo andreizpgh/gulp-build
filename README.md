@@ -8,7 +8,7 @@
 
 - work/images/src
 
-- work/fonts
+- work/fonts/src
 
 # Get started:
 
@@ -23,7 +23,7 @@ git clone https://github.com/andreizpgh/gulp-build.git
 - Create /work/images/src and /work/fonts folders (if they are missing & needed):
 
 ```
-cd /work && mkdir images/src fonts
+cd /work && mkdir images/src fonts/src
 ```
 
 # Main commands:
