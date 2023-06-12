@@ -14,7 +14,7 @@ const newer = require("gulp-newer"); // don't repeat tasks
 const svgSprite = require("gulp-svg-sprite");
 
 // Fonts
-const fonter = require("gulp-fonter");
+const fonter = require("gulp-fonter-unx");
 const ttf2woff2 = require("gulp-ttf2woff2");
 
 // Watch and build
