@@ -3,6 +3,8 @@
 //                work/scss/style.scss
 //                work/js/main.js
 //                work/images/src
+//                work/fonts
+// To create required file structure: cd into /work and `mkdir fonts images`
 //
 // To initialize gulp: `npm i`
 // To start working: `gulp`
