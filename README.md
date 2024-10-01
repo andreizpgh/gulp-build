@@ -1,14 +1,14 @@
-# Working files:
+# Source files:
 
-- work/*.html
+- src/*.html
 
-- work/scss/style.scss
+- src/scss/style.scss
 
-- work/js/main.js
+- src/js/main.js
 
-- work/images/src
+- src/images/src
 
-- work/fonts/src
+- src/fonts/src
 
 # Get started:
 
@@ -20,10 +20,10 @@ git clone https://github.com/andreizpgh/gulp-build.git
 
 - Copy all the contents from /gulp-build to the ongoing project (except README.md and /.git)
 
-- Create /work/images/src and /work/fonts folders (if they are missing & needed):
+- Create /src/images/src and /src/fonts folders (if they are missing & needed):
 
 ```
-cd /work && mkdir images/src fonts/src
+cd /src && mkdir images/src fonts/src
 ```
 
 # Main commands:
