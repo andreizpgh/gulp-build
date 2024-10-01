@@ -27,58 +27,58 @@ const clean = require("gulp-clean");
 //
 
 function styles() {
-  return src("work/scss/style.scss")
+  return src("src/scss/style.scss")
     .pipe(autoprefixer({ overrideBrowserlist: ["last 10 version"] }))
     .pipe(concat("style.min.css"))
     .pipe(scss({ outputStyle: "compressed" }))
-    .pipe(dest("work/css"))
+    .pipe(dest("src/css"))
     .pipe(browserSync.stream());
 }
 
 function scripts() {
-  return src("work/js/main.js")
+  return src("src/js/main.js")
     .pipe(concat("main.min.js"))
     .pipe(uglify())
-    .pipe(dest("work/js"))
+    .pipe(dest("src/js"))
     .pipe(browserSync.stream());
 }
 
 function images() {
-  return src(["work/images/src/*.*", "!work/images/src/*.svg"])
-    .pipe(newer("work/images"))
+  return src(["src/images/src/*.*", "!src/images/src/*.svg"])
+    .pipe(newer("src/images"))
     .pipe(avif({ quality: 50 })) // convert to avif
-    .pipe(src("work/images/src/*.*"))
-    .pipe(newer("work/images"))
+    .pipe(src("src/images/src/*.*"))
+    .pipe(newer("src/images"))
     .pipe(webp()) // convert to webp
-    .pipe(src("work/images/src/*.*"))
-    .pipe(newer("work/images"))
+    .pipe(src("src/images/src/*.*"))
+    .pipe(newer("src/images"))
     .pipe(imagemin()) // just minify
-    .pipe(dest("work/images"));
+    .pipe(dest("src/images"));
 }
 
 function sprite() {
-  return src("work/images/src/*.svg")
+  return src("src/images/src/*.svg")
     .pipe(
       svgSprite({ mode: { stack: { sprite: "../sprite.svg", example: true } } })
     ) // unify all the SVGs in one sprite file
-    .pipe(dest("work/images"));
+    .pipe(dest("src/images"));
 }
 
 function fonts() {
-  return src("work/fonts/src/*.*")
+  return src("src/fonts/src/*.*")
     .pipe(fonter({ formats: ["woff", "ttf"] }))
-    .pipe(src("work/fonts/*.ttf"))
+    .pipe(src("src/fonts/*.ttf"))
     .pipe(ttf2woff2())
-    .pipe(dest("work/fonts"));
+    .pipe(dest("src/fonts"));
 }
 
 function watching() {
-  browserSync.init({ server: { baseDir: "work/" } });
-  watch(["work/scss/style.scss"], styles);
-  watch(["work/js/main.js"], scripts);
-  watch(["work/images/src"], images, sprite);
-  watch(["work/fonts/src"], fonts);
-  watch(["work/**/*.html"]).on("change", browserSync.reload);
+  browserSync.init({ server: { baseDir: "src/" } });
+  watch(["src/scss/style.scss"], styles);
+  watch(["src/js/main.js"], scripts);
+  watch(["src/images/src"], images, sprite);
+  watch(["src/fonts/src"], fonts);
+  watch(["src/**/*.html"]).on("change", browserSync.reload);
 }
 
 function cleanBuild() {
@@ -88,16 +88,16 @@ function cleanBuild() {
 function fillBuild() {
   return src(
     [
-      "work/css/style.min.css",
-      "work/js/main.min.js",
-      "work/*.html",
-      "work/images/*.*",
-      "!work/images/*.svg",
-      "work/images/sprite.svg",
-      "work/fonts/*.*",
+      "src/css/style.min.css",
+      "src/js/main.min.js",
+      "src/*.html",
+      "src/images/*.*",
+      "!src/images/*.svg",
+      "src/images/sprite.svg",
+      "src/fonts/*.*",
     ],
     {
-      base: "work",
+      base: "src",
     }
   ).pipe(dest("build"));
 }
